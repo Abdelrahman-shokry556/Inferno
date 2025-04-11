@@ -13,7 +13,11 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   const result = await authService.loginUser(email, password);
-  res.status(StatusCodes.OK).json(result);
+  res.status(StatusCodes.OK).json({
+    success: true,
+    message: "User logged in successfully.",
+    data: result,
+  });
 };
 
 const updateUser = async (req, res) => {

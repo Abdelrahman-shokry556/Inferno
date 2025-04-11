@@ -17,6 +17,7 @@ const connectDB = require("./db/connect");
 const authenticateUser = require("./middleware/authentication");
 // routers
 const authRouter = require("./routes/auth");
+const broadcastRtouer = require("./routes/broadcasts.routes");
 const messagesRouter = require("./routes/messages");
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -33,6 +34,7 @@ app.use(xss());
 // routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/messages", authenticateUser, messagesRouter);
+app.use("/api/v1/broadcasts", broadcastRtouer);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
