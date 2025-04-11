@@ -38,6 +38,18 @@ class BroadcastService {
       createdAt: broadcast.createdAt,
     };
   }
+
+  async getAllBroadcasts() {
+    const broadcasts = await Broadcast.find({});
+    // return broadcasts.map((broadcast) => ({
+    //   id: broadcast._id,
+    //   name: broadcast.name,
+    //   description: broadcast.description,
+    //   createdBy: broadcast.createdBy,
+    //   createdAt: broadcast.createdAt,
+    // }));
+    return broadcasts;
+  }
 }
 
 module.exports = new BroadcastService();
