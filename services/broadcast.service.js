@@ -50,6 +50,25 @@ class BroadcastService {
     // }));
     return broadcasts;
   }
+
+  async getBroadcastById(id) {
+    if (!id) {
+      throw new BadRequestError("Please provide a broadcast ID");
+    }
+
+    const broadcast = await Broadcast.findById(id);
+    if (!broadcast) {
+      throw new UnauthenticatedError("Broadcast not found");
+    }
+
+    return {
+      id: broadcast._id,
+      name: broadcast.name,
+      description: broadcast.description,
+      createdBy: broadcast.createdBy,
+      createdAt: broadcast.createdAt,
+    };
+  }
 }
 
 module.exports = new BroadcastService();

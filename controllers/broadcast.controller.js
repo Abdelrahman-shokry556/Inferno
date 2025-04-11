@@ -37,8 +37,27 @@ const getUnjoinedBroadcasts = async (req, res) => {
   });
 };
 
+const getSingleBroadcast = async (req, res) => {
+  const { id } = req.params;
+  const result = await broadcastService.getBroadcastById(id);
+
+  if (!result) {
+    return res.status(StatusCodes.NOT_FOUND).json({
+      success: false,
+      message: "Broadcast not found.",
+    });
+  }
+
+  res.status(StatusCodes.OK).json({
+    success: true,
+    message: "Broadcast retrieved successfully.",
+    data: result,
+  });
+};
+
 module.exports = {
   createBroadcast,
   getAllBroadcasts,
 	getUnjoinedBroadcasts,
+	getSingleBroadcast
 };

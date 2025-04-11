@@ -6,10 +6,12 @@ const {
   createBroadcast,
   getAllBroadcasts,
   getUnjoinedBroadcasts,
+  getSingleBroadcast,
 } = require("../controllers/Broadcast.controller");
 
 router.post("/", auth, createBroadcast);
 router.get("/", auth, getAllBroadcasts);
 router.get("/unjoined", auth, getUnjoinedBroadcasts);
+router.get("/:id", auth, getSingleBroadcast);
 
 module.exports = router;
