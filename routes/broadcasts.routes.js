@@ -5,9 +5,11 @@ const auth = require("../middleware/authentication");
 const {
   createBroadcast,
   getAllBroadcasts,
-} = require("../controllers/Broadcast.controller"); // Fixed casing issue
+  getUnjoinedBroadcasts,
+} = require("../controllers/Broadcast.controller");
 
 router.post("/", auth, createBroadcast);
 router.get("/", auth, getAllBroadcasts);
+router.get("/unjoined", auth, getUnjoinedBroadcasts);
 
 module.exports = router;
