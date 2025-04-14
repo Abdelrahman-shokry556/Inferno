@@ -78,11 +78,11 @@ export const LoginPage: FC = () => {
             // تحقق من وجود بثوص
             const broadcasts = await getMyBroadcasts();
             console.log('User broadcasts:', broadcasts);
+            console.log('User broadcasts:', broadcasts.length);
             if (broadcasts.length === 0) {
-                navigate('/broadcast/messages');
-              } else {
                 navigate('/dashboard');
-
+              } else {
+                navigate('/broadcast/messages');
               }              
             // navigate('/dashboard');
 
